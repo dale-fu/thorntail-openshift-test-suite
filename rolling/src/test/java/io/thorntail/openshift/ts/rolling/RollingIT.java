@@ -35,7 +35,7 @@ public class RollingIT {
         openshift.scale(APP_NAME, 3);
 
         Counters countersV1 = new Counters();
-        await().atMost(3, TimeUnit.MINUTES).untilAsserted(() -> {
+        await().atMost(10, TimeUnit.MINUTES).untilAsserted(() -> {
             String id =
                     given()
                             .baseUri(url)
@@ -55,7 +55,7 @@ public class RollingIT {
         openshift.deployLatest(APP_NAME, false);
 
         Counters countersV2 = new Counters();
-        await().atMost(3, TimeUnit.MINUTES).untilAsserted(() -> {
+        await().atMost(10, TimeUnit.MINUTES).untilAsserted(() -> {
             String id =
                     given()
                             .baseUri(url)
